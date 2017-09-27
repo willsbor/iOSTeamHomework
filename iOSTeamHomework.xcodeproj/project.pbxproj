@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2714AD8B1F79F9CB00689F1A /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714AD8A1F79F9CB00689F1A /* StoryboardInstantiable.swift */; };
+		2714AD8D1F7ACB1B00689F1A /* PhoneNumberTableAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714AD8C1F7ACB1B00689F1A /* PhoneNumberTableAction.swift */; };
+		2714AD8F1F7ACB9B00689F1A /* PhoneNumberTableBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714AD8E1F7ACB9B00689F1A /* PhoneNumberTableBehavior.swift */; };
+		279963DE1F78364100F46C86 /* PhoneNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279963DD1F78364100F46C86 /* PhoneNumbers.swift */; };
+		279963E01F78FFFB00F46C86 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279963DF1F78FFFB00F46C86 /* InputViewController.swift */; };
 		AB54AC121F6D65B20000EF31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB54AC111F6D65B20000EF31 /* AppDelegate.swift */; };
 		AB54AC171F6D65B20000EF31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB54AC151F6D65B20000EF31 /* Main.storyboard */; };
 		AB54AC191F6D65B20000EF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB54AC181F6D65B20000EF31 /* Assets.xcassets */; };
@@ -35,6 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2714AD8A1F79F9CB00689F1A /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
+		2714AD8C1F7ACB1B00689F1A /* PhoneNumberTableAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberTableAction.swift; sourceTree = "<group>"; };
+		2714AD8E1F7ACB9B00689F1A /* PhoneNumberTableBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberTableBehavior.swift; sourceTree = "<group>"; };
+		279963DD1F78364100F46C86 /* PhoneNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumbers.swift; sourceTree = "<group>"; };
+		279963DF1F78FFFB00F46C86 /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		AB54AC0E1F6D65B20000EF31 /* iOSTeamHomework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSTeamHomework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB54AC111F6D65B20000EF31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB54AC161F6D65B20000EF31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -76,6 +86,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		279963DC1F78358000F46C86 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				279963DD1F78364100F46C86 /* PhoneNumbers.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		279963E11F79F94C00F46C86 /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2714AD8A1F79F9CB00689F1A /* StoryboardInstantiable.swift */,
+				2714AD8E1F7ACB9B00689F1A /* PhoneNumberTableBehavior.swift */,
+			);
+			name = protocols;
+			sourceTree = "<group>";
+		};
 		AB54AC051F6D65B20000EF31 = {
 			isa = PBXGroup;
 			children = (
@@ -99,9 +126,13 @@
 		AB54AC101F6D65B20000EF31 /* iOSTeamHomework */ = {
 			isa = PBXGroup;
 			children = (
+				279963E11F79F94C00F46C86 /* protocols */,
+				279963DC1F78358000F46C86 /* model */,
 				AB54AC111F6D65B20000EF31 /* AppDelegate.swift */,
-				AB54AC3F1F6D6F3D0000EF31 /* PhoneNumberTableViewController.swift */,
 				AB54AC431F6D76BC0000EF31 /* PhoneNumberManager.swift */,
+				AB54AC3F1F6D6F3D0000EF31 /* PhoneNumberTableViewController.swift */,
+				279963DF1F78FFFB00F46C86 /* InputViewController.swift */,
+				2714AD8C1F7ACB1B00689F1A /* PhoneNumberTableAction.swift */,
 				AB54AC151F6D65B20000EF31 /* Main.storyboard */,
 				AB54AC181F6D65B20000EF31 /* Assets.xcassets */,
 				AB54AC1A1F6D65B20000EF31 /* LaunchScreen.storyboard */,
@@ -263,8 +294,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB54AC441F6D76BC0000EF31 /* PhoneNumberManager.swift in Sources */,
+				279963E01F78FFFB00F46C86 /* InputViewController.swift in Sources */,
 				AB54AC121F6D65B20000EF31 /* AppDelegate.swift in Sources */,
 				AB54AC401F6D6F3D0000EF31 /* PhoneNumberTableViewController.swift in Sources */,
+				2714AD8F1F7ACB9B00689F1A /* PhoneNumberTableBehavior.swift in Sources */,
+				2714AD8B1F79F9CB00689F1A /* StoryboardInstantiable.swift in Sources */,
+				279963DE1F78364100F46C86 /* PhoneNumbers.swift in Sources */,
+				2714AD8D1F7ACB1B00689F1A /* PhoneNumberTableAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,7 +503,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = gogolook.iOSTeamHomeworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSTeamHomework.app/iOSTeamHomework";
 			};
@@ -484,7 +520,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = gogolook.iOSTeamHomeworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSTeamHomework.app/iOSTeamHomework";
 			};
@@ -500,7 +536,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = gogolook.iOSTeamHomeworkUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = iOSTeamHomework;
 			};
@@ -516,7 +552,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = gogolook.iOSTeamHomeworkUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = iOSTeamHomework;
 			};

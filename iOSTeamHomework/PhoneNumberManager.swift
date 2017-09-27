@@ -8,26 +8,30 @@
 
 import Foundation
 
+
 class PhoneNumberManager {
-    struct NumberData {
-        var code: Int
-        var number: Int
-    }
     
     static let sharedInstance = PhoneNumberManager()
     static let dataChangedNotification: Notification.Name = Notification.Name("PhoneNumberManager.dataChangedNotification")
+    static let FILE_NAME = "numbers.dat"
     
-    private(set) var numbers: [NumberData] = [] {
+    private(set) var numbers: [PhoneNumbers] = [] {
         didSet {
             NotificationCenter.default.post(name: PhoneNumberManager.dataChangedNotification, object: nil)
         }
     }
     
-    func add(_ number: NumberData) {
+    func checkExists(_ phoneNumber: PhoneNumbers) -> Bool {
+        return numbers.filter({ (data) -> Bool in
+            return (data.code == phoneNumber.code && data.number == phoneNumber.number)
+        }).count > 0
+    }
+    
+    func add(_ number: PhoneNumbers) {
         numbers.append(number)
     }
     
-    func remove(_ number: NumberData) {
+    func remove(_ number: PhoneNumbers) {
         let index = numbers.index { (data) -> Bool in
             return data.code == number.code && data.number == number.number
         }
@@ -49,46 +53,55 @@ class PhoneNumberManager {
             var next = result
             next.append(code)
             return next
-        })
+        }).sorted(by: <)
     }
     
-    func getNumbers(`for` code: Int) -> [NumberData] {
+    func getNumbers(`for` code: Int) -> [PhoneNumbers] {
         return numbers.filter({ (data) -> Bool in
             return data.code == code
+        }).sorted(by: { (pre, next) -> Bool in
+            return pre.number < next.number
         })
     }
     
-    func load() {
+    func load(url: URL) -> [PhoneNumbers]{
         do {
-            let tempDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
-            let targetURL = tempDirectoryURL.appendingPathComponent("numbers.dat")
-            
+            let targetURL = url
+            numbers.removeAll()
             let data = try Data(contentsOf: targetURL)
             if let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? [[String: Int]] {
-                numbers = json.map({ (item) -> NumberData in
-                    return NumberData(code: item["code"]!, number: item["number"]!)
+                numbers = json.map({ (item) -> PhoneNumbers in
+                    return PhoneNumbers(code: item[PhoneNumbers.KEY_CODE]!, number: item[PhoneNumbers.KEY_NUMBER]!)
                 })
             }
             
         } catch let error {
             print("\(error)")
         }
+        
+        return numbers
     }
     
-    func save() {
+    func save(url: URL) {
         let json = numbers.map { (data) -> [String: Int] in
-            return ["code": data.code,
-                    "number": data.number]
+            return [PhoneNumbers.KEY_CODE: data.code,
+                    PhoneNumbers.KEY_NUMBER: data.number]
         }
         
         do {
             let data = try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions(rawValue: 0))
             
-            let tempDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
-            let targetURL = tempDirectoryURL.appendingPathComponent("numbers.dat")
+            let targetURL = url
             try data.write(to: targetURL)
         } catch let error {
             print("\(error)")
         }
+    }
+    
+    func getFilePathURL(fileName: String) -> URL {
+        let tempDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
+        let targetURL = tempDirectoryURL.appendingPathComponent(fileName)
+        
+        return targetURL
     }
 }

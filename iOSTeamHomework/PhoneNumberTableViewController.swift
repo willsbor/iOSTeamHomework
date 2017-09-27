@@ -9,51 +9,37 @@
 import UIKit
 
 class PhoneNumberTableViewController: UITableViewController {
-
+    
+    private var tableAct: PhoneNumberTableBehavior!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(dataChanged), name: PhoneNumberManager.dataChangedNotification, object: nil)
-    }
-
-
-    @IBAction func addPhoneNumber() {
-        let d = PhoneNumberManager.NumberData(code: Int(arc4random() % 9 + 1), number: Int(arc4random() % 90000000 + 10000000))
-        PhoneNumberManager.sharedInstance.add(d)
-    }
-    
-    @IBAction func savePhoneNumbers() {
-        PhoneNumberManager.sharedInstance.save()
-    }
-    
-    @objc func dataChanged() {
-        tableView.reloadData()
+        
+        tableAct = PhoneNumberTableAction()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return PhoneNumberManager.sharedInstance.getCodes().count
+        return tableAct.getSections().count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let code = PhoneNumberManager.sharedInstance.getCodes()[section]
-        return PhoneNumberManager.sharedInstance.getNumbers(for: code).count
+        return tableAct.getRows(section: section).count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let code = PhoneNumberManager.sharedInstance.getCodes()[section]
+        let code = tableAct.getSections()[section]
         return "\(code)"
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "default", for: indexPath)
-
-        let code = PhoneNumberManager.sharedInstance.getCodes()[indexPath.section]
-        let data = PhoneNumberManager.sharedInstance.getNumbers(for: code)[indexPath.row]
+        let section = indexPath.section
+        let data = tableAct.getRows(section: section)[indexPath.row]
+        tableAct.setCell(cell: cell, phoneNumber: data)
         
-        cell.textLabel?.text = "\(data.number)"
-        cell.detailTextLabel?.text = "\(data.code) \(data.number)"
-
         return cell
     }
 
@@ -70,9 +56,46 @@ class PhoneNumberTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let code = PhoneNumberManager.sharedInstance.getCodes()[indexPath.section]
-            let data = PhoneNumberManager.sharedInstance.getNumbers(for: code)[indexPath.row]
-            PhoneNumberManager.sharedInstance.remove(data)
+            deleteRow(indexPath: indexPath)
+        }
+    }
+    
+    private func deleteRow(indexPath: IndexPath) {
+        let section = indexPath.section
+        let data = tableAct.getRows(section: section)[indexPath.row]
+        let isNeedsDeleteSec = tableAct.getRows(section: indexPath.section).count == 1
+        tableAct.deleteRow(data)
+        self.tableView.beginUpdates()
+        if isNeedsDeleteSec {
+            self.tableView.deleteSections(IndexSet(integer: indexPath.section), with: .automatic)
+        }
+        self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        self.tableView.endUpdates()
+    }
+    
+    //MARK: - button actions
+    @IBAction func addPhoneNumber() {
+        switchToInputPage()
+    }
+    
+    @IBAction func savePhoneNumbers() {
+        tableAct.save()
+    }
+    
+    //MARK: - switch page
+    private func switchToInputPage() {
+        
+        if let icv = InputViewController.instantiate() {
+            icv.setCallback { [weak self] (phoneNumber: PhoneNumbers) -> Bool in
+                if let result = self?.tableAct.addRow(phoneNumber) {
+                    self?.tableView.reloadData()
+                    
+                    return result
+                } else {
+                    return false
+                }
+            }
+            self.navigationController?.present(icv, animated: true, completion: nil)
         }
     }
 }
