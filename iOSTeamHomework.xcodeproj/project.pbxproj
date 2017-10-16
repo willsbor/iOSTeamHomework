@@ -12,6 +12,7 @@
 		2714AD8F1F7ACB9B00689F1A /* PhoneNumberTableBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714AD8E1F7ACB9B00689F1A /* PhoneNumberTableBehavior.swift */; };
 		279963DE1F78364100F46C86 /* PhoneNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279963DD1F78364100F46C86 /* PhoneNumbers.swift */; };
 		279963E01F78FFFB00F46C86 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279963DF1F78FFFB00F46C86 /* InputViewController.swift */; };
+		AB3DB20E1F944BDF00F28DC4 /* BackgroundSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3DB20D1F944BDF00F28DC4 /* BackgroundSyncManager.swift */; };
 		AB54AC121F6D65B20000EF31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB54AC111F6D65B20000EF31 /* AppDelegate.swift */; };
 		AB54AC171F6D65B20000EF31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB54AC151F6D65B20000EF31 /* Main.storyboard */; };
 		AB54AC191F6D65B20000EF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB54AC181F6D65B20000EF31 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		2714AD8E1F7ACB9B00689F1A /* PhoneNumberTableBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberTableBehavior.swift; sourceTree = "<group>"; };
 		279963DD1F78364100F46C86 /* PhoneNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumbers.swift; sourceTree = "<group>"; };
 		279963DF1F78FFFB00F46C86 /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
+		AB3DB20D1F944BDF00F28DC4 /* BackgroundSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSyncManager.swift; sourceTree = "<group>"; };
 		AB54AC0E1F6D65B20000EF31 /* iOSTeamHomework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSTeamHomework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB54AC111F6D65B20000EF31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB54AC161F6D65B20000EF31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				AB54AC3F1F6D6F3D0000EF31 /* PhoneNumberTableViewController.swift */,
 				279963DF1F78FFFB00F46C86 /* InputViewController.swift */,
 				2714AD8C1F7ACB1B00689F1A /* PhoneNumberTableAction.swift */,
+				AB3DB20D1F944BDF00F28DC4 /* BackgroundSyncManager.swift */,
 				AB54AC151F6D65B20000EF31 /* Main.storyboard */,
 				AB54AC181F6D65B20000EF31 /* Assets.xcassets */,
 				AB54AC1A1F6D65B20000EF31 /* LaunchScreen.storyboard */,
@@ -296,6 +299,7 @@
 				AB54AC441F6D76BC0000EF31 /* PhoneNumberManager.swift in Sources */,
 				279963E01F78FFFB00F46C86 /* InputViewController.swift in Sources */,
 				AB54AC121F6D65B20000EF31 /* AppDelegate.swift in Sources */,
+				AB3DB20E1F944BDF00F28DC4 /* BackgroundSyncManager.swift in Sources */,
 				AB54AC401F6D6F3D0000EF31 /* PhoneNumberTableViewController.swift in Sources */,
 				2714AD8F1F7ACB9B00689F1A /* PhoneNumberTableBehavior.swift in Sources */,
 				2714AD8B1F79F9CB00689F1A /* StoryboardInstantiable.swift in Sources */,
